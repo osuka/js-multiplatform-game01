@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B39772E0-78D1-41BA-9500-244CA49113E1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>game01</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>388CA66B-9E77-43D0-B877-57E8712A2716</key>
+		<string>ssh://github.com/osuka/gaming.git</string>
+		<key>A55FE7C7-99F4-4972-90B5-F9D4C4FCB24C</key>
+		<string>git://github.com/cocos2d-x/bindings-auto-generated.git</string>
+		<key>E898FFCD-6B83-4413-83C2-E6799A0BB015</key>
+		<string>https://github.com/cocos2d/cocos2d-x</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>js-multiplatform-game01/proj.ios_mac/game01.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>388CA66B-9E77-43D0-B877-57E8712A2716</key>
+		<string>../bower_components</string>
+		<key>A55FE7C7-99F4-4972-90B5-F9D4C4FCB24C</key>
+		<string>../bower_components/cocos2d-x/cocos/scripting/auto-generated</string>
+		<key>E898FFCD-6B83-4413-83C2-E6799A0BB015</key>
+		<string>../bower_components/cocos2d-x</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/osuka/gaming.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>388CA66B-9E77-43D0-B877-57E8712A2716</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A55FE7C7-99F4-4972-90B5-F9D4C4FCB24C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>auto-generated</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E898FFCD-6B83-4413-83C2-E6799A0BB015</string>
+			<key>IDESourceControlWCCName</key>
+			<string>cocos2d-x</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>388CA66B-9E77-43D0-B877-57E8712A2716</string>
+			<key>IDESourceControlWCCName</key>
+			<string>gaming</string>
+		</dict>
+	</array>
+</dict>
+</plist>

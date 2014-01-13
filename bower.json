@@ -1,0 +1,22 @@
+{
+  "name": "game01",
+  "version": "0.0.0",
+  "authors": [
+    "osuka <disposuka@gmail.com>" 
+  ],
+  "description": "A game",
+  "main": "main.js",
+  "license": "proprietary",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "cocos2d-html5": "Cocos2d-html5-v2.2.2",
+    "cocos2d-x": "http://cdn.cocos2d-x.org/cocos2d-x-3.0beta.zip"
+  }
+
+}
