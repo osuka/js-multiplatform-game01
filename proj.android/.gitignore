@@ -1,1 +1,5 @@
 assets
+gen
+bin
+libs
+obj

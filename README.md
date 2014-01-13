@@ -50,11 +50,19 @@ grunt server
 
 # Launching the XCode (iOS, Mac) version
 
-Open `proj.ios_mac/game01.xcodeproj`. Launch as usual.
+* Make sure the game has been built, by running `grunt server`
+* Open `proj.ios_mac/game01.xcodeproj`.
+
+Launch as usual.
 
 # Launching the Android version
 
-Import `proj.android` into your IDE. Launch as usual.
+* Make sure the game has been built, by running `grunt server`
+* Import `bower_components/cocos2d-x/cocos/2d` into your IDE. This will create
+the project `libcocos2dx`.
+* Import `proj.android` into your IDE. This will create the `game01` project.
+
+Launch as usual.
 
 
 # Advanced
