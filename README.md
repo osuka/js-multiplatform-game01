@@ -50,7 +50,7 @@ grunt server
 
 # Launching the XCode (iOS, Mac) version
 
-Open `proj.ios_mac/manifajs.xcodeproj`. Launch as usual.
+Open `proj.ios_mac/game01.xcodeproj`. Launch as usual.
 
 # Launching the Android version
 
