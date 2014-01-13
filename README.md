@@ -58,6 +58,7 @@ Launch as usual.
 # Launching the Android version
 
 * Make sure the game has been built, by running `grunt server`
+* Build the native part of the Android application by running `python proj.android/build_native.py`
 * Import `bower_components/cocos2d-x/cocos/2d` into your IDE. This will create
 the project `libcocos2dx`.
 * Import `proj.android` into your IDE. This will create the `game01` project.

@@ -81,6 +81,10 @@ def copy_resources(app_android_root):
     resources_dir = os.path.join(app_android_root, "../Resources")
     if os.path.isdir(resources_dir):
         copy_files(resources_dir, assets_dir)
+    resources_dir = os.path.join(app_android_root, "../dist")
+    if os.path.isdir(resources_dir):
+        copy_files(resources_dir, assets_dir)
+
 
     # jsb project should copy javascript files and resources(shared with cocos2d-html5)
     resources_dir = os.path.join(app_android_root, "../bower_components/cocos2d-x/cocos/scripting/javascript/script")
