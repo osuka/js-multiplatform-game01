@@ -11,7 +11,7 @@
   var Resources = [
     //image
     { src : 'res/headers-100.png' },
-    { src : 'res/maps/../tiles/tilesheet-1_2x-fixed.png' },
+    { src : 'res/maps/tilesheet-1_2x-fixed.png' },
     { src : 'res/sprites/spritesheet1_1x.png' },
     { src : 'res/sprites/spritesheet1_2x.png' },
     { src : 'res/1x1-pixel.png' },

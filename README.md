@@ -9,9 +9,14 @@ I'm using:
 
 * npm, browserify and bower for dependency management
 * grunt for building
-* cocos2d-x and cocos2d-html5 as the game engine
+* cocos2d-x (3.0) and cocos2d-html5 as the game engine
 * chipmunk as the physics engine
 * Inkscape for graphics
+
+Requirements:
+* node 0.10.24 to trigger everything else
+* A version of python is currently needed to run the Android build
+script (plans to migrate it to node).
 
 You are encouraged to reuse this in any way you want and to give
 feedback and report errors or suggestions using the github page.
@@ -24,12 +29,12 @@ feedback and report errors or suggestions using the github page.
 * Get a copy of the repository using [`git`](http://git-scm.com/).
 
 ```
-git clone https://github.com/osuka/js-multiplatform-game
+git clone https://github.com/osuka/js-multiplatform-game01
 ```
 
 * Use the node package manager to download all the external libraries.
 This will in turn install and invoke `bower` for the libraries that are not in the node repositories,
-namely `cocos2d-x` and `cocos2d-html5`.
+namely `cocos2d-x` and `cocos2d-html5`. This process will take a while and download about 400 MB of software.
 
 ```
 npm install -g grunt-cli
@@ -50,20 +55,25 @@ grunt server
 
 # Launching the XCode (iOS, Mac) version
 
-* Make sure the game has been built, by running `grunt server`
+* Build the game using `grunt build:ios`
 * Open `proj.ios_mac/game01.xcodeproj`.
 
 Launch as usual.
 
 # Launching the Android version
 
-* Make sure the game has been built, by running `grunt server`
-* Build the native part of the Android application by running `python proj.android/build_native.py`
-* Import `bower_components/cocos2d-x/cocos/2d` into your IDE. This will create
+* Make sure you have a `python` interpreter available.
+* Make sure Android SDK and Android NDK are installed, and that `ANDROID_SDK_ROOT` and `NDK_ROOT` are defined.
+* Build the game using `grunt build:android`
+* If using Eclipse:
+  * Import `bower_components/cocos2d-x/cocos/2d` into your IDE. This will create
 the project `libcocos2dx`.
-* Import `proj.android` into your IDE. This will create the `game01` project.
+  * Import `proj.android` into your IDE. This will create the `game01` project.
+  * Launch as Android Application from the IDE.
+* Of if you just want to use the command line
+  * Install on a device using `ant debug install` (needs `ant`)
 
-Launch as usual.
+Optionally, choose the desired supported Android OS versions in properties for both projects.
 
 
 # Advanced

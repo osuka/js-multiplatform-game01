@@ -66,7 +66,8 @@ def copy_files(src, dst):
             shutil.copy(path, dst)
         if os.path.isdir(path):
             new_dst = os.path.join(dst, item)
-            os.mkdir(new_dst)
+            if not os.path.isdir(new_dst):
+              os.mkdir(new_dst)
             copy_files(path, new_dst)
 
 def copy_resources(app_android_root):

@@ -1,5 +1,19 @@
 'use strict';
 
+// Use:
+// 
+// grunt server    to build and launch HTML5 version
+// 
+// grunt build:html5
+// grunt build:android
+// grunt build:ios       to build versions
+// 
+// grunt build      to build all
+// 
+// grunt clean      to clean intermediate files
+// 
+// 
+
 module.exports = function (grunt) {
   // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
@@ -130,6 +144,15 @@ module.exports = function (grunt) {
       }
     },
 
+    shell: {
+      buildnative: {
+        command: 'cd proj.android && python build_native.py',
+        options: {
+          stdout: true
+        }
+      }
+    },
+
     copy: {
       build: {
         files: [{
@@ -173,18 +196,40 @@ module.exports = function (grunt) {
         }
         ]
       }
-    },
+    }
 
   });
 
-  grunt.registerTask('checkProperties', function () {
-    return grunt.config.requires('properties.gaia_homepath');
+  grunt.registerTask('build', function (target) {
+    if (target === 'html5') {
+      grunt.task.run([
+        'jshint',
+        'clean:dist',
+        'copy:build',
+        'browserify'
+      ]);
+    } else if (target === 'android') {
+      grunt.task.run([
+        'build:html5',
+        'shell:buildnative'
+      ]);
+    } else if (target === 'ios') {
+      grunt.task.run([
+        'build:html5'
+      ]);
+    } else {
+      grunt.task.run([
+        'build:html5',
+        'build:ios',
+        'build:android'
+      ]);
+    }
   });
-
+ 
   grunt.registerTask('server', function (target) {
     if (target === 'dist') {
       grunt.task.run([
-        'build',
+        'build:html5',
         'browserify',
         'open:server',
         'connect:dist:keepalive'
@@ -198,11 +243,11 @@ module.exports = function (grunt) {
       ]);
     } else {
       grunt.task.run([
-        'jshint',
+        'build:html5',
         'browserify',
         'clean:server',
         'connect:server',
-        //'open:server',
+        'open:server',
         'watch'
       ]);
     }
@@ -215,21 +260,4 @@ module.exports = function (grunt) {
     'mocha'
   ]);
 
-  grunt.registerTask('build', [
-    'clean:dist',
-    // 'imagemin',
-    'copy:build',
-  ]);
-
-  grunt.registerTask('dist', [
-    'clean:dist',
-    // 'imagemin',
-    'copy:build',
-  ]);
-
-//  grunt.registerTask('default', [
-//    'jshint',
-//    'test',
-//    'build'
-//  ]);
 };
