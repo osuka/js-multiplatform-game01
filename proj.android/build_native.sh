@@ -1,4 +1,4 @@
-APPNAME="multiplatform-presentation"
+APPNAME="game01"
 
 # options
 

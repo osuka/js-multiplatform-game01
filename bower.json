@@ -2,7 +2,7 @@
   "name": "game01",
   "version": "0.0.0",
   "authors": [
-    "osuka <disposuka@gmail.com>" 
+    "osuka <osuka@gmail.com>" 
   ],
   "description": "A game",
   "main": "main.js",
