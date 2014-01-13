@@ -146,9 +146,12 @@ module.exports = function (grunt) {
 
     shell: {
       buildnative: {
-        command: 'cd proj.android && python build_native.py',
+        command: 'python build_native.py',
         options: {
-          stdout: true
+          stdout: true,
+          execOptions: {
+            cwd: 'proj.android'
+          }
         }
       }
     },
