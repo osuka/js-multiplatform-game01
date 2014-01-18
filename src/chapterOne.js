@@ -281,15 +281,21 @@
       }
       var animations = cc.AnimationCache.getInstance();
 
-      var state = '.standing';
-      if (body.getVel().y > 0.5) {
-        state = '.up';
-      } else if (body.getVel().y < -0.5) {
-        state = '.down';
-      } else if (body.getVel().x < -0.5) {
-        state = '.left';
-      } else if (body.getVel().x > 0.5) {
-        state = '.right';
+      var state;
+
+      // Main idea:
+      // Determine wheter it's going "more" vertically or horizontally
+      // to choose the sprite
+      var howMuchVert = Math.abs(body.getVel().y);
+      var howMuchHoriz = Math.abs(body.getVel().x);
+      var isVertical = howMuchVert > howMuchHoriz;
+
+      if (isVertical && howMuchVert > 0.5) {
+        state = (body.getVel().y > 0.5) ? '.up' : '.down';
+      } else if (howMuchHoriz > 0.25) {
+        state = (body.getVel().x > 0.25) ? '.right' : '.left';
+      } else {
+        state = '.standing';
       }
 
       if (sprite.state !== state) {
