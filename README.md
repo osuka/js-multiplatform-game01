@@ -71,7 +71,7 @@ the project `libcocos2dx`.
   * Import `proj.android` into your IDE. This will create the `game01` project.
   * Launch as Android Application from the IDE.
 * Of if you just want to use the command line
-  * Install on a device using `ant debug install` (needs `ant`)
+  * Install on a device using `ant -Dsdk.dir=${ANDROID_SDK_ROOT} debug install` (needs `ant`)
 
 Optionally, choose the desired supported Android OS versions in properties for both projects.
 
