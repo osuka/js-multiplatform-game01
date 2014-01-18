@@ -22,7 +22,7 @@
       // corner of the screen you would do:
       // tilemap.setPosition( cc.p(0, -mapheight + SD.viewportSize.height) );
 
-      var gameArea = this.getChildByTag(this.TAG_GAMEAREA_LAYER);
+      var gameArea = this._getGameArea();
       gameArea.setAnchorPoint(0, 0);
       gameArea.addChild(tilemap, 0, this.TAG_TILEMAP);
 
@@ -42,11 +42,111 @@
 
       this.createDefendants(tilemap);
 
+      this.autoMap('layer1', tilemap);
+
       var pos = cc.p(0, 0);
       this.ensureGameAreaPositionWithinBoundaries(pos);
       gameArea.setPosition(pos);
 
       return true;
+
+    },
+
+    // Creates physics objects for collisions following a very
+    // basic algorithm that attemps to find vertical and horizontal
+    // segments to minimize the number of objects need
+    autoMap: function (layername, tilemap) {
+
+      // this.toggleDebug();
+      var layer = tilemap.getLayer(layername);
+      var p = cc.p(0, 0);
+      var size = layer.getLayerSize();
+
+      var _this = this;
+
+      var getVisitedArray = function () {
+        if (typeof _this._visitedArrayCache === 'undefined') {
+          _this._visitedArrayCache = new Array(size.height);
+          for (p.y = 0; p.y < size.height; p.y++) {
+            _this._visitedArrayCache[p.y] = new Array(size.width);
+          }
+        }
+        for (var i = 0; i < size.height; i++) {
+          for (var j = 0; j < size.width; j++) {
+            _this._visitedArrayCache[i][j] = false;
+          }
+        }
+        return _this._visitedArrayCache;
+      };
+
+      var visited = getVisitedArray();
+
+      var scale = this._getTilemapScale();
+      var space = this.space;
+
+      var isBusy = function (x, y) {
+        var tile = layer.getTileAt(cc.p(x, y));
+        return tile !== null;
+      };
+
+      var addRectangle = function (x, y, w, h) {
+        var vector = [
+          0, 0,
+          0, h * scale,
+          w * scale, h * scale,
+          w * scale, 0
+        ];
+        var shape = new cp.PolyShape(
+          space.staticBody, vector,
+          cp.v(scale * x, scale * y - h * scale)
+        );
+        space.addStaticShape(shape);
+        shape.setElasticity(1);
+        shape.setFriction(1);
+      };
+
+      var lookupHoriz = function (p) {
+        for (var i = p.x + 1;
+          i < size.width && !visited[p.y][i] && isBusy(i, p.y); i++) {
+          visited[p.y][i] = true;
+        }
+        return i - p.x;
+      };
+
+      var lookupVert = function (p) {
+        for (var i = p.y + 1;
+          i < size.height && !visited[i][p.x] && isBusy(p.x, i); i++) {
+          visited[i][p.x] = true;
+        }
+        return i - p.y;
+      };
+
+      var examineTile = function (p) {
+        if (!visited[p.y][p.x] && isBusy(p.x, p.y)) {
+          visited[p.y][p.x] = true;
+          var height = 1;
+          var width = 1;
+          var count = lookupHoriz(p, visited);
+          if (count < 2) {
+            height = lookupVert(p, visited);
+          } else {
+            width = count;
+          }
+          cc.log('Found segment: ' + count + 'blocks at ' + p.x + ',' + p.y +
+            ((width >= height) ? 'horiz' : 'vert'));
+          addRectangle(
+            p.x * tilemap.getTileSize().width,
+            (size.height - p.y) * tilemap.getTileSize().height,
+            width * tilemap.getTileSize().width,
+            height * tilemap.getTileSize().height);
+        }
+      };
+
+      for (p.y = 0; p.y < size.height; p.y++) {
+        for (p.x = 0; p.x < size.width; p.x++) {
+          examineTile(p);
+        }
+      }
 
     },
 
@@ -141,9 +241,7 @@
 
     createGoal: function (tilemap) {
       var gameArea = this.getChildByTag(this.TAG_GAMEAREA_LAYER);
-      var tilemapSprite =
-      gameArea.getChildByTag(this.TAG_TILEMAP);
-      var scale = tilemapSprite.getScale();
+      var scale = this._getTilemapScale();
 
       var goals = tilemap.getObjectGroup('goal').getObjects();
       var goal = goals[0];
@@ -153,8 +251,13 @@
       var sprite = cc.Sprite.create('res/1x1-pixel.png');
       sprite.setPosition(cc.p(scale * parseInt(goal.x, 10),
              scale * parseInt(goal.y, 10)));
-      sprite.setScaleX(w * scale);
-      sprite.setScaleY(h * scale);
+      if (scale === 0.5) {
+        sprite.setScaleX(w * scale * 2); // because pixel is x0.5 in spritesheet
+        sprite.setScaleY(h * scale * 2);
+      } else {
+        sprite.setScaleX(w * scale);
+        sprite.setScaleY(h * scale);
+      }
       sprite.setAnchorPoint(cp.v(0, 0));
       gameArea.addChild(sprite, 10000, this.TAG_GOAL);
 
@@ -320,7 +423,6 @@
           body.setVel(cp.v(2000 * dt * (Math.random() * 2 - 1),
                            2000 * dt * (Math.random() * 2 - 1)));
           body.setAngVel(0);
-          body.setAngle(0);
         }
       }
     },
@@ -333,6 +435,7 @@
       }
 
       body.setAngle(0);
+      body.setAngVel(0);
       this.setSpriteStateBasedOnVelocity(sprite, body);
 
       var gameArea = this.getChildByTag(this.TAG_GAMEAREA_LAYER);
@@ -352,7 +455,6 @@
           body.setVel(cp.v(0, 0));
         } else {
           body.setVel(cp.v(2000 * dt * incX, 2000 * dt * incY));
-          body.setAngVel(0);
         }
       }
     },
@@ -586,6 +688,15 @@
 
     _getGameArea: function () {
       return this.getChildByTag(this.TAG_GAMEAREA_LAYER);
+    },
+
+    _getTilemap: function () {
+      var gameArea = this._getGameArea();
+      return gameArea.getChildByTag(this.TAG_TILEMAP);
+    },
+
+    _getTilemapScale: function () {
+      return this._getTilemap().getScale();
     },
 
     ensureGameAreaPositionWithinBoundaries: function (newPos) {
