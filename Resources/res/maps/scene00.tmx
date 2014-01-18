@@ -5,45 +5,17 @@
  </tileset>
  <layer name="layer0" width="40" height="60">
   <data encoding="base64" compression="zlib">
-   eJzt1MEJwCAQRFGrCZ7Tf3EpIYiSnQ3v8K/6GME5xpjhXYc6fSYf3598p+vgqzbs7HeH+6rj4+N7N1YbVvar/vM6vS8fX3XJvvT9+Pj4+Pgy6+CrNnTfj4+Pj48vLz4+Pj6+zPj4EnwrfX3vA/LSZeQ=
+   eJztmEuSgzAMRDnNVNaZ+98tlR3lUv8kw7CYhRcELD+12jLkdRzH6+HjZ9PYHXON9XsaT+M7cz2Z76n6uYyMveLr5lrxneNVjOla0/moFlUct+5rDaqR8KV5s/gorzRHp77f8SaaJL6c6Mf42DpdvsSLiK+K1dVvnZNoqXoVi1utm2jmnAVJL0Ws6B7jcGvt8ikNqzVVbR1vJHyO/1z2pG87/mM+c+aqvZTo9yZxd41pfa9kQ/Gr39L+fLeGV/NNPaje1Tpn5hqLnStTvq6eqCeznNkeSXJKdOicM4n/nLXT+6iXpnzOmebmhZiVR1n/q2I5Xldnn/Kpy+fGQX5L3h+Qt93+p/hUH0Lzd/Kl2jgcO/hcNmck3mN8qF8xZpVTsp/U/nB0cX2pPLqDD63pesLZe10+dl15ya2787z7bcm0U+s6vkFauvopzzAtWc7KJ+73OasrY3D17PIhr6u1lE/VnIQPMaLnFMcVfG5dHQ7m8wmfipXsS4e7478qHrrv8Cm/JP25y4T2lOPn7v8HqH6qryjm9bfu93m1PuvRSkOUZ4cP9Q7Wi1m/vJMPcbr7Y8rnslWaKr7q+c7+cD3XyXeNq75/2dyqHyN9Hb4qRvL+csVgNVZ8SieUu+Jgeq/XSX0dD6qaKu71+W590fPTPZbyTUdS87/gm45/vj18ybh73Q9q7YcA
   </data>
  </layer>
  <layer name="layer1" width="40" height="60">
   <data encoding="base64" compression="zlib">
-   eJztmN0KAiEQRpetboNus97/NVNIiGEdxx3Hv74DIkWtJ0dHm20DM+J8ezE9ALOz+3bx7frtbwZj/D7/qOfGvJPXDwO/HNyYs/qFuHMxKYkRhebJN/PZZ8KPeudoNe+j+8W5HtUvspqfSzR6T6D59uxeK/WTInmuJBZhXzvyXu4+JblXSfy4fGONVVxqIfGzuANIqbX+rKjhJ90HZ/bLP8yfJaP7xbzKrYOe+Q8AYE/uTOh5hkvomUMllPhJz+ea9cSV5q8HK/u1+G3w0wE/HfDTAT8d8NOh9dtriTBjaL4b/qcf1XdTNd/S+m/P+ErqC6uvP2tW9msBamAg8gGHBw82
+   eJztmNFuwyAMRVG79XFS97h2/P9nrki1dneHsR0ISaVcKSJRCJzYYAwpHXpF3R7XHcoLPe9Nn1sDGDr4+rQG3+lxnR/X27N872hL48P2S3mh51afH/R87eDL6f+cron/o9XnSD6vRvAVv6MPrDIyLvKzFBt/N+p+KXzMbWmG3bEfL9+Vyh555r/YGvl4zON6JvVn8Yk89sP29sJ3hyun3xhyUy6OMRxvMR7m5J9r0fnhVa1dK94IP3KXeX2jeto49MTkCB/HG3k/I0Z4+FgSL/fCp42/LfjKHJF5YXFsZT+WxWftK6JlD98p2ev0yLwzyhddJ3oV5ZM41/JL8e+oPMvTXyvfqiliv1l5For5ij01G3j+PeIPLDUfMV/veOz93vJRNt5bQr6WL0RLfMTCXEnuPXyz9/Se/rBObU+qlWf4zlpDtDji8f0aNovsWaNtLRWufWyXWo6riX2Rk28eWOeJrbWI+Wb4jHXwtdXTZg8fj1UtnmDsmck3ytZr+XfvfMVv2llq5LwOc0n+hvcIS3MG7b+WxP+rcu/J2fm8RcR7y1r7XvXwoVpjAXMoXkf2wNdTX+OTcYq5ZiuHtPpbGgc1Pm+/0Xot1fJutAme88u4z6mdx4zkwxhVi0Xa/PLmz6eFXDXVWHr5ypjlfYrsIWv7z1bsjvB5ZP2D9Z7nHq4jIuRr7bfX4PMI+UbHs9F8UVlr9dZ8lkbw4RgdndtjbLPOIrZo79Bf/QDNfiFF
   </data>
  </layer>
  <objectgroup draworder="topdown" name="solids" width="40" height="60">
-  <object x="989" y="448" width="264" height="68"/>
-  <object x="771" y="1282" width="29" height="445"/>
-  <object x="221" y="1018" width="19" height="707"/>
-  <object x="512" y="569" width="30" height="200"/>
-  <object x="1" y="514" width="540" height="58"/>
-  <object x="257" y="700" width="269" height="68"/>
-  <object x="991" y="515" width="31" height="250"/>
-  <object x="768" y="1089" width="39" height="125"/>
-  <object x="251" y="1029" width="549" height="65"/>
-  <object x="1939" y="1006" width="118" height="59"/>
-  <object x="1963" y="527" width="118" height="59"/>
-  <object x="2" y="2243" width="510" height="59"/>
-  <object x="1219" y="515" width="33" height="365"/>
-  <object x="5" y="3" width="2557" height="62"/>
-  <object x="1217" y="1" width="184" height="383"/>
-  <object x="223" y="1671" width="412" height="68"/>
-  <object x="5" y="66" width="54" height="441"/>
-  <object x="2" y="581" width="60" height="1656"/>
-  <object x="0" y="2305" width="63" height="1538"/>
   <object x="65" y="3780" width="701" height="65"/>
   <object x="1862" y="3771" width="701" height="65"/>
-  <object x="2498" y="1475" width="64" height="2292"/>
-  <object x="642" y="2246" width="510" height="59"/>
-  <object x="1342" y="2052" width="510" height="59"/>
-  <object x="1657" y="1092" width="646" height="56"/>
-  <object x="2109" y="964" width="452" height="62"/>
-  <object x="1401" y="645" width="743" height="62"/>
-  <object x="1922" y="130" width="507" height="59"/>
-  <object x="1377" y="645" width="30" height="498"/>
-  <object x="2115" y="648" width="30" height="331"/>
  </objectgroup>
  <objectgroup draworder="topdown" name="generator-defendant" width="40" height="60">
   <object name="b" x="265" y="1103" width="26" height="26"/>
@@ -118,13 +90,6 @@
   <object x="551" y="3173">
    <ellipse/>
   </object>
-  <object x="1283" y="1413" width="1284" height="59"/>
-  <object x="2490" y="66" width="72" height="1346"/>
-  <object x="1858" y="2050" width="32" height="1594"/>
-  <object x="256" y="2497" width="38" height="1086"/>
-  <object x="353" y="3203" width="32" height="60"/>
-  <object x="1280" y="3332" width="32" height="60"/>
-  <object x="352" y="3268" width="962" height="60"/>
  </objectgroup>
  <objectgroup draworder="topdown" name="attackers" width="40" height="60">
   <object x="501" y="141">
