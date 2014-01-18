@@ -10,6 +10,7 @@
   var ChapterOne = BaseLayer.extend({
 
     TAG_GOAL :   29999995,
+    TAG_TOUCHES : 39999980,
 
     init: function () {
       this._super();
@@ -57,7 +58,6 @@
     // segments to minimize the number of objects need
     autoMap: function (layername, tilemap) {
 
-      // this.toggleDebug();
       var layer = tilemap.getLayer(layername);
       var p = cc.p(0, 0);
       var size = layer.getLayerSize();
@@ -634,9 +634,90 @@
       );
     },
 
+    findFingerObject: function (touch) {
+      var id = touch.getId();
+      cc.log('touch id=' + id);
+      var gameArea = this._getGameArea();
+      var sprite = gameArea.getChildByTag(this.TAG_TOUCHES + id);
+      if (!sprite) {
+        sprite = cc.Sprite.create('res/1x1-pixel.png');
+        var scale = this._getTilemapScale();
+        scale *= 2;
+        sprite.setScaleX(32 * scale);
+        sprite.setScaleY(32 * scale);
+        sprite.setAnchorPoint(cp.v(0.5, 0.5));
+        sprite.setRotation(45);
+        gameArea.addChild(sprite, 10000, this.TAG_TOUCHES + id);
+        cc.log('new touch');
+      }
+      return sprite;
+    },
+
+    feedbackFingerStart: function (touch) {
+      var sprite = this.findFingerObject(touch);
+      var gameArea = this._getGameArea();
+      var point = gameArea.convertTouchToNodeSpace(touch);
+      sprite.setPosition(point);
+
+      sprite.runAction(
+        cc.RepeatForever.create(
+          cc.Sequence.create(
+            cc.FadeIn.create(0.25),
+            cc.FadeOut.create(0.25)
+      )));
+      sprite.runAction(
+        cc.RepeatForever.create(
+          cc.Sequence.create(
+            cc.RotateTo.create(0.25, 180, 180),
+            cc.RotateTo.create(0.25, 0, 0)
+      )));
+
+    },
+
+    feedbackFingerMoved: function (touch) {
+      var sprite = this.findFingerObject(touch);
+      var gameArea = this._getGameArea();
+      var point = gameArea.convertTouchToNodeSpace(touch);
+      sprite.setPosition(point);
+    },
+
+    feedbackFingerStop: function (touch) {
+      var sprite = this.findFingerObject(touch);
+      var gameArea = this._getGameArea();
+      var point = gameArea.convertTouchToNodeSpace(touch);
+      sprite.setPosition(point);
+
+      var suicide = function () {
+        gameArea.removeChild(sprite);
+      };
+
+      sprite.runAction(
+        cc.Sequence.create(
+          cc.FadeOut.create(0.15),
+          cc.CallFunc.create(suicide)
+      ));
+      sprite.runAction(
+        cc.ScaleTo.create(0.15, 0.1)
+      );
+
+    },
+
+    onTouchesBegan: function (touches) {
+      for (var touch in touches) {
+        this.feedbackFingerStart(touches[touch]);
+      }
+    },
+
+    onTouchesMoved: function (touches) {
+      for (var touch in touches) {
+        this.feedbackFingerMoved(touches[touch]);
+      }
+    },
+
     onTouchesEnded: function (touches) {
-      for (var j = 0; j < touches.length; j++) {
-        var point = this.convertTouchToNodeSpace(touches[j]);
+      for (var touch in touches) {
+        var point = this.convertTouchToNodeSpace(touches[touch]);
+        this.feedbackFingerStop(touches[touch]);
         this.checkGeneratorClicked(point);
       }
     },
